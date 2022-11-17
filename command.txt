@@ -1,0 +1,50 @@
+1.ローカルのIP情報が取れる
+curl ipinfo.io
+
+2.QRコードを生成
+curl qrenco.de/toshi
+
+3.天気を表示
+curl wttr.in/kanagawa
+
+------------------------------------------------------------
+1.GETしたものをoutput.htmlに表示する
+curl -o output.html https://google.com
+
+2.
+$ curl -d "name=toshi" -d "hoge=piyo" https://example.com
+
+-d データを送信する(POST)
+
+3.JSONをPOSTする
+curl -H "Content-Type: appilication/json" \
+-d '{"key" : "value"}' https://example.com
+
+Content-Typeを -H(header)で application/jsonと明示することで、受け取るサーバがわがパラメータをJSONとして認識する。
+
+4.jsonファイルを指定することもできる
+curl -H "Content-Type: application/json" \
+-d @params.json https://example.com
+
+5. BASIC認証
+curl -u id:password https://example.com
+
+6.APIキーを指定する
+curl -H 'Authorization: Bearer xxxx' https://example.com
+
+
+----------------------------------------------------
+-d / --data: POSTしたいパラメータ
+-H / --header: リクエストHeaderを指定する
+-u: BASIC認証のID Passwordを指定する
+
+----------------------------------------------------
+httpbin.org 
+https://httpbin.org/
+で試す
+
+1.GET Method
+curl -X GET "https://httpbin.org/get" | jq
+
+2.POST Method
+curl -X POST "https://httpbin.org/post" | jq

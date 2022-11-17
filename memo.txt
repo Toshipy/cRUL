@@ -1,0 +1,67 @@
+REST
+REpresentational State Transfer
+
+1.アドレスの可能性・・・全ての情報を一意のURLで示すことができる
+2.httpのメソッドで操作を特定・・・GET/POSTなど
+3.ステートレス・・・やり取りは一回ごとに完結し、前の結果に影響されない。何回やっても同じ
+4.処理結果はHTTPステータスコードで通知・・・200 OK
+
+API・・・Application Programming Interface の略
+アプリケーション間で通信する際に、決められたルールでやり取りできる入り口
+
+Web API・・・HTTPプロトコルを用いたAPI（XML-RPC, SOAP, REST）
+RESTが現在では主流
+
+http通信の流れ
+(1)ネットワーク確率 
+⇨(2)Request(リクエストをAPIサーバーへ送信すること)（リクエストライン、ヘッダー、ボディ）
+⇨(3)Response（ステータスライン,ヘッダー,ボディ）
+
+POST /AA/bb.html HTTP/1.1
+Method URI version
+
+JSON(JavaScript Object Notation)・・・JavaScriptにおけるオブジェクトの表記法を応用したテキストベースのデータ方式
+
+
+cURLの概要
+MIT Licenseに基づき配布されているフリーソフトウェア
+FileMakerでAPIにリクエストする場合は
+
+
+# HTTPリクエストを実施し結果を標準出力へ
+$ curl http://対象のURL
+
+#コンマや[]を使って範囲指定も出来る
+$ curl 'http://{one,two,three}.example.com'
+$ curl 'http://[1-3].example.com'
+
+# 実行結果をファイルへ出力
+$ curl http://対象のURL > 出力先
+$ curl -o 出力先PATH http://対象のURL
+
+# ファイル出力時の進捗状況を非表示にする(エラーも非表示)
+$ curl -s -o 出力先PATH http://対象のURL
+
+# 上記でエラーは表示したい場合
+$ curl -sS -o 出力先PATH http://対象のURL
+
+# プログレスバーで進捗率を表示
+$ curl -# -O http://対象のURL
+
+# SSL接続で証明書エラーをスキップ
+$ curl -k https://対象のURL
+
+# URLのファイル名でダウンロード (下記はindex.htmlで保存される)
+$ curl -O http://対象のURL/index.html
+
+# プロキシ経由でアクセスする
+$ curl -x プロキシサーバ:ポート番号 --proxy-user ユーザ名:パスワード http://対象のURL
+
+# リダイレクトを有効にする
+$ curl -L http://対象のURL
+
+# ダウンロードを中断したときに再度ダウンロードを再開するとき
+$ curl -C - http://対象のURL
+
+# HTTPメソッドの指定（-X）
+$ curl -X PUT http://対象のURL
